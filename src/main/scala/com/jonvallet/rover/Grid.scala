@@ -12,14 +12,6 @@ case class Grid(rows: Int, columns: Int) {
     rollPosition(newPosition)
   }
 
-  def applyCommand(command: Command, rover: Rover): Rover = {
-    command match {
-      case RotateLeft => rotateLeft(rover)
-      case RotateRight => rotateRight(rover)
-      case MoveForward => moveForward(rover)
-    }
-  }
-
   def rotateLeft(rover: Rover): Rover = {
     val newPosition = rover match {
       case Rover(_, Up) => Rover(rover.position, Left)
@@ -38,6 +30,14 @@ case class Grid(rows: Int, columns: Int) {
       case Rover(_, Right) => Rover(Position(rover.position.x + 1, rover.position.y), Right)
     }
     rollPosition(newPosition)
+  }
+
+  def applyCommand(command: Command, rover: Rover): Rover = {
+    command match {
+      case RotateLeft => rotateLeft(rover)
+      case RotateRight => rotateRight(rover)
+      case MoveForward => moveForward(rover)
+    }
   }
 
   def path(rover: Rover, destination: Position): List[Command] = {
@@ -65,7 +65,7 @@ case class Grid(rows: Int, columns: Int) {
       i <- 0 until rows
       j <- 0 until columns + 1
       cell = if (i == rover.position.y && j == rover.position.x) orientationSymbol(rover.orientation)
-        else if (j < columns) "O"
+        else if (j < columns) "░"
         else "\n"
     } print(cell)
   }
