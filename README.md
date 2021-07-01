@@ -1,7 +1,7 @@
 # Mars Rover #
 This is a small scala app that simulates the movement of the mars rover
 
-## Running Requirement ##
+## Running Requirements ##
 This project has being test with sbt 1.5.4 and AdoptOpenJDK 11, but is very possible 
 it will also work with older or newer versions.
 
