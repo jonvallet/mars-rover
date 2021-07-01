@@ -5,7 +5,7 @@ import flatspec._
 import matchers._
 
 class RoverBasicMovementSpec extends AnyFlatSpec with should.Matchers {
-  val grid: Grid = Grid(4,4)
+  private val grid: Grid = Grid(4,4)
   "A Rover" should "move forward" in {
     grid.moveForward(Rover(Position(2,2), Up)) should be (Rover(Position(2,1), Up))
     grid.moveForward(Rover(Position(2,2), Down)) should be (Rover(Position(2,3), Down))
@@ -18,16 +18,16 @@ class RoverBasicMovementSpec extends AnyFlatSpec with should.Matchers {
   }
 
   it should "turn left" in {
-    grid.moveLeft(Rover(Position(2,2), Up)) should be (Rover(Position(2,2), Left))
-    grid.moveLeft(Rover(Position(2,2), Down)) should be (Rover(Position(2,2), Right))
-    grid.moveLeft(Rover(Position(2,2), Left)) should be (Rover(Position(2,2), Down))
-    grid.moveLeft(Rover(Position(2,2), Right)) should be (Rover(Position(2,2), Up))
+    grid.rotateLeft(Rover(Position(2,2), Up)) should be (Rover(Position(2,2), Left))
+    grid.rotateLeft(Rover(Position(2,2), Down)) should be (Rover(Position(2,2), Right))
+    grid.rotateLeft(Rover(Position(2,2), Left)) should be (Rover(Position(2,2), Down))
+    grid.rotateLeft(Rover(Position(2,2), Right)) should be (Rover(Position(2,2), Up))
   }
 
   it should "turn right" in {
-    grid.moveRight(Rover(Position(2,2), Up)) should be (Rover(Position(2,2), Right))
-    grid.moveRight(Rover(Position(2,2), Down)) should be (Rover(Position(2,2), Left))
-    grid.moveRight(Rover(Position(2,2), Left)) should be (Rover(Position(2,2), Up))
-    grid.moveRight(Rover(Position(2,2), Right)) should be (Rover(Position(2,2), Down))
+    grid.rotateRight(Rover(Position(2,2), Up)) should be (Rover(Position(2,2), Right))
+    grid.rotateRight(Rover(Position(2,2), Down)) should be (Rover(Position(2,2), Left))
+    grid.rotateRight(Rover(Position(2,2), Left)) should be (Rover(Position(2,2), Up))
+    grid.rotateRight(Rover(Position(2,2), Right)) should be (Rover(Position(2,2), Down))
   }
 }
