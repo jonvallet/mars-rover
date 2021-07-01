@@ -37,7 +37,6 @@ case class Grid(rows: Int, columns: Int) {
       case n if n >= size => 0
       case _ => coordinate
     }
-
   }
 
   private def rollPosition(rover: Rover): Rover = {
